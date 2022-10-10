@@ -18,13 +18,12 @@ body {
 }
 
 .container {
-    margin: 5px 0 5px 0;
+    padding: 5px;
     text-align: center;
-    
     overflow-y: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    width: 100%;
+    /* width: 100%; */
 }
 
 .container::-webkit-scrollbar {
@@ -75,6 +74,18 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
+.err::-webkit-input-placeholder {
+    color: red;
+ }
+
+ .err {
+    border-bottom: 1px solid red;
+}
+
+ input:focus::placeholder {
+    color: transparent;
+  }
+
 button {
     background: #333;
     color: #fff;
@@ -84,6 +95,7 @@ button {
 
 #theaters button {
     width: 162px;
+    width: 100%;
 
 }
 

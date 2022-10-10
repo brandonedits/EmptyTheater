@@ -15,8 +15,8 @@
     <div class="container">
 
         <form action="" id="getTheaters">
-            <div id="input">
-                <input inputmode="numeric" pattern="[0-9]*" type="number" placeholder="# of Theaters" id="numberOfTheaters">
+            <div id="data">
+                <input inputmode="numeric" pattern="[0-9]*" type="number" placeholder="# of Theaters" id="numberOfTheaters" value="">
                 <button type="submit">GET THEATERS</button>
             </div>
         </form>
