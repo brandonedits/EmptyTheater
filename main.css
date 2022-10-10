@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: -webkit-fill-available;
+}
+
+body {
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    height: -webkit-fill-available;
+}
+
+.container {
+    margin: 5px 0 5px 0;
+    text-align: center;
+    
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    width: 100%;
+}
+
+.container::-webkit-scrollbar {
+    display: none;
+}
+
+#theaters {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    display: none;
+}
+
+.col {
+    flex-direction: column;
+
+}
+
+input,
+button {
+    padding: 10px;
+    border-width: 2px 0 2px 0;
+    border-style: solid;
+    font-size: 16px;
+}
+
+input {
+    border-color: #fff;
+    border-radius: 0;
+    -webkit-appearance: none;
+}
+
+
+input:focus {
+    outline: none;
+    border-bottom: 2px solid rgb(35, 110, 37);
+}
+
+/* Hide number arrows - Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Hide number arrows - Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+button {
+    background: #333;
+    color: #fff;
+    border-color: #333;
+    cursor: pointer;
+}
+
+#theaters button {
+    width: 162px;
+
+}
+
+.active {
+    background: rgb(35, 110, 37);
+    border-color: rgb(35, 110, 37);
+}
+
+button#reset {
+    background: red;
+    border-color: red;
+}
+
+button:hover,
+button#reset:hover {
+    background: rgb(35, 110, 37);
+    border-color: rgb(35, 110, 37);
+}
+
+@media screen and (max-width: 600px) {
+    button:hover {
+        background: #333;
+        border-color: #333;
+    }
+}
