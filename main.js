@@ -1,3 +1,5 @@
+alert('touchstart js css if 2');
+
 // prevent pasting into input
 numberOfTheaters.addEventListener('paste', (e) => {
     e.preventDefault()
@@ -46,6 +48,28 @@ GetTheatersBtn.addEventListener('submit', (e) => {
             let btn = document.createElement('button');
             btn.innerHTML = 'Theater ' + [i + 1];
             theaters.appendChild(btn);
+
+            // mobile
+
+            //touchmove || touchstart || dblTouchStart
+            // if !touch move, then touchstart || dblTouchStart
+            // touchType function
+
+            btn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                if(btn.style.backgroundColor != 'rgb(35, 110, 37)'){
+                // if(!btn.classList.contains('active')){
+                    let active = 'rgb(35, 110, 37)';
+                    btn.style.background = active
+                    btn.style.borderColor = active
+                } else {
+                    let inactive = '#333';
+                    btn.style.background = inactive;
+                    btn.style.borderColor = inactive;
+                }
+                
+            });
+
     
             //change btn color
             btn.addEventListener('click', () => {

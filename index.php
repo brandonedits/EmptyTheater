@@ -16,7 +16,7 @@
 
         <form action="" id="getTheaters">
             <div id="data">
-                <input inputmode="numeric" pattern="[0-9]*" type="number" placeholder="# of Theaters" id="numberOfTheaters" value="">
+                <input inputmode="numeric" pattern="[0-9]*" type="number" placeholder="# of Theaters" id="numberOfTheaters" value="11">
                 <button type="submit">GET THEATERS</button>
             </div>
         </form>
