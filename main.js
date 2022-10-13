@@ -46,43 +46,22 @@ GetTheatersBtn.addEventListener('submit', (e) => {
             btn.classList.add('not-selectable');
             btn.innerHTML = 'Theater ' + [i + 1];
             theaters.appendChild(btn);
-
-            // mobile
-            let touchmoved;
-            let lastClick = 0;
-            btn.addEventListener('touchend', (e) => {
-                e.preventDefault();
-
-                if(touchmoved != true){
-                    toggleBtn(btn);
-                }
-
-                // detect dblTouch
-                let date = new Date();
-                let time = date.getTime();
-                const timeDiff = 200;
-                if(time - lastClick < timeDiff){
-                    delBtn(btn);
-                }
-                lastClick = time;
-            });
-            
-            btn.addEventListener('touchmove', (e) => {
-                touchmoved = true;
-            });
-
-            btn.addEventListener('touchstart', (e) => {
-                touchmoved = false;
-            });
     
-            //change btn color
+            // toggle btn color
             btn.addEventListener('click', () => {
-                toggleBtn(btn);
+                btn.classList.toggle('active');
             });
     
             // del btn
             btn.addEventListener('dblclick', () => {
-                delBtn(btn);
+                if(btn.classList.contains('active')){
+                    btn.remove();
+                    // return to home once empty
+                    let btns = document.querySelectorAll('#theaters button');
+                    if(btns.length == 1){
+                        resetPage();
+                    }   
+                }
             });    
         }
     
@@ -98,32 +77,11 @@ GetTheatersBtn.addEventListener('submit', (e) => {
             resetPage();
         });
 
-        function toggleBtn(btn){
-            btn.classList.toggle('active');
-        }
-
-        function delBtn(btn){
-            if(btn.classList.contains('active')){
-                btn.remove();
-                countBtns();    
-            }
-        }
-
-        // return to home once clear
-        function countBtns(){
-            let btns = document.querySelectorAll('#theaters button');
-            if(btns.length == 1){
-               resetPage();
-            }
-        }
-
         function resetPage(){
             theaters.innerHTML = '';
             theaters.style.display = 'none';
             data.style.display = 'block';
             numberOfTheaters.classList.remove('err');
         }
-        
     }
-
 });
