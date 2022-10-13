@@ -1,5 +1,3 @@
-<?php header('cache-control: no-cache'); ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
     <script src="main.js" defer></script>
-    <title>ClearTheaters</title>
+    <title>Empty Theater</title>
 </head>
 
 <body>
@@ -16,7 +14,7 @@
 
         <form action="" id="getTheaters">
             <div id="data">
-                <input inputmode="numeric" pattern="[0-9]*" type="number" placeholder="# of Theaters" id="numberOfTheaters" value="5">
+                <input inputmode="numeric" pattern="[0-9]*" type="number" placeholder="# of Theaters" id="numberOfTheaters">
                 <button type="submit" class="not-selectable">GET THEATERS</button>
             </div>
         </form>

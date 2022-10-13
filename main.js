@@ -40,7 +40,6 @@ GetTheatersBtn.addEventListener('submit', (e) => {
     } else {
         data.style.display = 'none';
         theaters.style.display = 'flex';
-        const active = 'rgb(35, 110, 37)';
 
         for(let i = 0; i < numberOfTheaters.value; i++){
             let btn = document.createElement('button');
@@ -53,6 +52,7 @@ GetTheatersBtn.addEventListener('submit', (e) => {
             let lastClick = 0;
             btn.addEventListener('touchend', (e) => {
                 e.preventDefault();
+
                 if(touchmoved != true){
                     toggleBtn(btn);
                 }
@@ -77,12 +77,12 @@ GetTheatersBtn.addEventListener('submit', (e) => {
     
             //change btn color
             btn.addEventListener('click', () => {
-                toggleBtn2(btn);
+                toggleBtn(btn);
             });
     
             // del btn
             btn.addEventListener('dblclick', () => {
-                delBtn2(btn);
+                delBtn(btn);
             });    
         }
     
@@ -99,28 +99,10 @@ GetTheatersBtn.addEventListener('submit', (e) => {
         });
 
         function toggleBtn(btn){
-            if(btn.style.backgroundColor != active){
-                btn.style.background = active;
-                btn.style.borderColor = active;
-            } else {
-                let inactive = '#333';
-                btn.style.background = inactive;
-                btn.style.borderColor = inactive;
-            }
-        }
-
-        function toggleBtn2(btn){
             btn.classList.toggle('active');
         }
 
         function delBtn(btn){
-            if(btn.style.backgroundColor == active){
-                btn.remove();
-                countBtns();
-            }
-        }
-
-        function delBtn2(btn){
             if(btn.classList.contains('active')){
                 btn.remove();
                 countBtns();    

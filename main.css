@@ -74,7 +74,7 @@ input::-webkit-inner-spin-button {
 }
 
 /* Hide number arrows - Firefox */
-input[type=number] {
+input[type='number'] {
     -moz-appearance: textfield;
 }
 
@@ -82,13 +82,13 @@ input[type=number] {
     color: red;
  }
 
- .err {
+.err {
     border-bottom: 1px solid red;
 }
 
- input:focus::placeholder {
+input:focus::placeholder {
     color: transparent;
-  }
+}
 
 button {
     background: #333;
@@ -114,12 +114,6 @@ button#reset {
     border-color: red;
 }
 
-button:hover,
-button#reset:hover {
-    background: rgb(35, 110, 37);
-    border-color: rgb(35, 110, 37);
-}
-
 .not-selectable {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -129,14 +123,10 @@ button#reset:hover {
     user-select: none;
   }
 
-@media screen and (max-width: 600px) {
-    #theaters button:hover {
-        background: #333;
-        border-color: #333;
-    }
-
+@media (hover: hover){
+    button:hover,
     button#reset:hover {
-        background: red;
-        border-color: red;
+    background: rgb(35, 110, 37);
+    border-color: rgb(35, 110, 37);
     }
 }
