@@ -1,6 +1,4 @@
-alert('touchstart js css if 2');
-
-// prevent pasting into input
+// prevent paste
 numberOfTheaters.addEventListener('paste', (e) => {
     e.preventDefault()
 });
@@ -28,9 +26,9 @@ GetTheatersBtn.addEventListener('submit', (e) => {
     // validate input
     let err = [];
     if(numberOfTheaters.value.trim() === ''){
-        err.push('need a number yo!');
+        err.push('app don\'t work w/o a #');
     }
-
+  
     if(numberOfTheaters.value.trim() != '' && numberOfTheaters.value.trim() == 0){
         err.push('need a different number');
     }
@@ -39,49 +37,52 @@ GetTheatersBtn.addEventListener('submit', (e) => {
         numberOfTheaters.value = '';
         numberOfTheaters.classList.add('err');
         numberOfTheaters.placeholder = err;
-        // document.getElementById("demo").innerHTML = cars;
     } else {
         data.style.display = 'none';
         theaters.style.display = 'flex';
+        const active = 'rgb(35, 110, 37)';
 
         for(let i = 0; i < numberOfTheaters.value; i++){
             let btn = document.createElement('button');
+            btn.classList.add('not-selectable');
             btn.innerHTML = 'Theater ' + [i + 1];
             theaters.appendChild(btn);
 
             // mobile
-
-            //touchmove || touchstart || dblTouchStart
-            // if !touch move, then touchstart || dblTouchStart
-            // touchType function
-
-            btn.addEventListener('touchstart', (e) => {
+            let touchmoved;
+            let lastClick = 0;
+            btn.addEventListener('touchend', (e) => {
                 e.preventDefault();
-                if(btn.style.backgroundColor != 'rgb(35, 110, 37)'){
-                // if(!btn.classList.contains('active')){
-                    let active = 'rgb(35, 110, 37)';
-                    btn.style.background = active
-                    btn.style.borderColor = active
-                } else {
-                    let inactive = '#333';
-                    btn.style.background = inactive;
-                    btn.style.borderColor = inactive;
+                if(touchmoved != true){
+                    toggleBtn(btn);
                 }
-                
+
+                // detect dblTouch
+                let date = new Date();
+                let time = date.getTime();
+                const timeDiff = 200;
+                if(time - lastClick < timeDiff){
+                    delBtn(btn);
+                }
+                lastClick = time;
+            });
+            
+            btn.addEventListener('touchmove', (e) => {
+                touchmoved = true;
             });
 
+            btn.addEventListener('touchstart', (e) => {
+                touchmoved = false;
+            });
     
             //change btn color
             btn.addEventListener('click', () => {
-                btn.classList.toggle('active');
+                toggleBtn2(btn);
             });
     
             // del btn
             btn.addEventListener('dblclick', () => {
-                if(btn.classList.contains('active')){
-                    btn.remove();
-                    countBtns();
-                }
+                delBtn2(btn);
             });    
         }
     
@@ -89,12 +90,42 @@ GetTheatersBtn.addEventListener('submit', (e) => {
         const resetBtn = document.createElement('button');
         resetBtn.innerHTML = 'RESET';
         resetBtn.id = 'reset';
+        resetBtn.classList.add('not-selectable');
         theaters.appendChild(resetBtn);
     
         // go to previous screen
         resetBtn.addEventListener('click', () => {
             resetPage();
         });
+
+        function toggleBtn(btn){
+            if(btn.style.backgroundColor != active){
+                btn.style.background = active;
+                btn.style.borderColor = active;
+            } else {
+                let inactive = '#333';
+                btn.style.background = inactive;
+                btn.style.borderColor = inactive;
+            }
+        }
+
+        function toggleBtn2(btn){
+            btn.classList.toggle('active');
+        }
+
+        function delBtn(btn){
+            if(btn.style.backgroundColor == active){
+                btn.remove();
+                countBtns();
+            }
+        }
+
+        function delBtn2(btn){
+            if(btn.classList.contains('active')){
+                btn.remove();
+                countBtns();    
+            }
+        }
 
         // return to home once clear
         function countBtns(){
